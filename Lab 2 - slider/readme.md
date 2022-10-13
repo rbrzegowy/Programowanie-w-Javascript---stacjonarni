@@ -2,7 +2,7 @@
 
 ### Wersja anacotokomu:
 - Wykonaj slider poziomy - zdjęcia przewijają się z prawej do lewej strony z użyciem animacji CSS lub animacji z JS.
-- Ilość slajdów jest stała, źródłem slajdów jest tablica z grafikami lub np. <div> zawierający <img>.
+- Ilość slajdów jest stała, źródłem slajdów jest tablica z grafikami lub np. &lt;div&gt; zawierający &lt;img&gt;.
 - Slajder posiada przyciski odpowiadające każdemu slajdowi (kropeczki/numerki etc). Kliknięcie w przycisk przenosi do konkretnego slajdu niezależnie od slajdu aktualnie wyświetlanego
 - Slajder posiada przycisk dalej/wstecz
 - Slajder po wyświetleniu ostatniego slajdu animuje się do początku
