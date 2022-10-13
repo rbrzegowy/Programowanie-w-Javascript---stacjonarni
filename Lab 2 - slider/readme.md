@@ -15,8 +15,8 @@
 
 
 ### Przykłady:
-> https://splidejs.com/
-> https://smartslider3.com/ken-burns/
+> https://splidejs.com/  
+> https://smartslider3.com/ken-burns/  
 > https://glidejs.com/
 
 ### Może się przydać
