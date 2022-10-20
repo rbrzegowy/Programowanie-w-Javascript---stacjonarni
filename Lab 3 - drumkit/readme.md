@@ -22,4 +22,4 @@
 > ```document.addEventListener(nazwaZdarzenia, callback)```
 
 #### Copyright
--- Dźwięki: https://99sounds.org/
+- Dźwięki: https://99sounds.org/
