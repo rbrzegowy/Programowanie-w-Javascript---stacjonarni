@@ -1,5 +1,4 @@
 // notatnik z zajęć
-const main = document.querySelector('main')
 const timeoutRef = setTimeout( 
     () => {
         main.innerHTML='From setTimeout'
