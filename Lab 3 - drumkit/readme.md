@@ -20,3 +20,6 @@
 > ``` document.querySelectorAll(selektor) ```  
 > Nasłuchiwanie na zdarzenia:
 > ```document.addEventListener(nazwaZdarzenia, callback)```
+
+#### Copyright
+- Dźwięki: https://99sounds.org/
