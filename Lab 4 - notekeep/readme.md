@@ -18,7 +18,7 @@ Notatki powinny być zapisywane w localStorage i wyświetlane w formie tablicy n
 
 ### Wersja ork
 - Zapisywanie daty przypomnień (i wyświetlanie przypomnienia jeśli user jest na stronie lub ma pominięte przypomnienia)  
-- Notatka może posiadać listę wypunktowaną (kliknięcie w punkt przenosi go do listy "done" - coś jak lista zakupów/todo)S  
+- Notatka może posiadać listę wypunktowaną (kliknięcie w punkt przenosi go do listy "done" - coś jak lista zakupów/todo)  
 
 Przykłady: Google Keep, Evernote, Onenote
 
