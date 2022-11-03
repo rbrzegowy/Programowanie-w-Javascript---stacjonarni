@@ -1,7 +1,7 @@
 ## NotePocket
 
 ### Wersja hobbit
-- Aplikacja pozwala na tworzenie, edycję przechowywanie i usuwanie notatek. Każda notatka musi w minimalnej formie posiadać:
+Aplikacja pozwala na tworzenie, edycję przechowywanie i usuwanie notatek. Każda notatka musi w minimalnej formie posiadać:
 
 > Tytuł  
 > Treść  
