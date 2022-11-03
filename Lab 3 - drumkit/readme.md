@@ -15,11 +15,8 @@
 
 
 ### Przydatne
-> Pobieranie elementu ze struktury DOM:
-> ```document.querySelector(selektor)```
-> ``` document.querySelectorAll(selektor) ```  
-> Nasłuchiwanie na zdarzenia:
-> ```document.addEventListener(nazwaZdarzenia, callback)```
+> Asynchroniczne wykonanie kodu po określonym czasie:
+> ```setTimeout(cb, time)```
 
 #### Copyright
 - Dźwięki: https://99sounds.org/
