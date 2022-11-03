@@ -12,14 +12,15 @@ Aplikacja pozwala na tworzenie, edycję przechowywanie i usuwanie notatek. Każd
 Notatki powinny być zapisywane w localStorage i wyświetlane w formie tablicy notatek na stronie głównej aplikacji.
 
 ### Wersja elf
-- Jednocześnie można odtworzyć jedynie wybrane kanały (np. tylko pierwszy i trzeci)
-- Możliwe jest nadpisanie zawartości danego kanału
-- Aplikacja posiada wbudowany prosty metronom (on/off, ilość uderzeń na minutę)
+- Tagowanie notatek  
+- Wyszukiwarka notatek (po wszystkich dostępnych pola notatki oraz tagach)  
+
 
 ### Wersja ork
-- Ilość kanałów jest dynamiczna (użytkownik może dodawać/kasować kanały)
-- Automat może pełnić rolę looper-a. Czyli odtwarzanie kanałów zostaje zapętlone. Pamiętaj że wtedy kanały muszą mieć równą długość (możesz przyjąć czas/takty na sztywno lub user może podać)
+- Zapisywanie daty przypomnień (i wyświetlanie przypomnienia jeśli user jest na stronie lub ma pominięte przypomnienia)  
+- Notatka może posiadać listę wypunktowaną (kliknięcie w punkt przenosi go do listy "done" - coś jak lista zakupów/todo)S  
 
+Przykłady: Google Keep, Evernote, Onenote
 
 ### Przydatne
 > Obsługa localStorage:  
