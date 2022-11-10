@@ -23,7 +23,7 @@ function saveCToSessionStorage(data) {
   const storageData = { data }
   sessionStorage.setItem('C', JSON.stringify(storageData))
   // brudzimy funkcję loggerem - to nie jest jej funkcjonalność!
-  Logger.log(data)
+  Logger.log(`[log from C] ${data}`)
 }
 
 function discoverPowerBallNumber(data) {
