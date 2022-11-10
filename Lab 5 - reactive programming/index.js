@@ -30,6 +30,4 @@ function saveDToSessionStorage(data) {
   console.log('[reader D]', data)
   const storageData = { data }
   sessionStorage.setItem('D', JSON.stringify(storageData))
-  // j/w
-  Logger.log(data)
 }
