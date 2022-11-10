@@ -6,7 +6,7 @@ function interval() {
     () => {
       // mamy coupling - interval ma na sztywno zaszyte w sobie C i D (..i logger)
       saveCToSessionStorage(timer)
-      saveDToSessionStorage(timer)
+      discoverPowerBallNumber(timer)
       timer++
     }
     , 2000)
