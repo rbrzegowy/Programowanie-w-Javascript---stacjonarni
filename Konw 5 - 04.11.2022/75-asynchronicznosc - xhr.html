@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM, zdarzenia w JS</title>
+  </head>
+  <body>
+    <div id="container"></div>
+    
+    <!-- 1. -->
+    <img src='images/totally wasted hours.jpeg' id="ob">
+    
+    <script type="text/javascript">
+    //   1. warm up - image load in js
+    //     <img src='images/totally wasted hours.jpeg' id="ob">
+    const img = document.querySelector('#ob');
+    console.log(img.width)
+    let logo = new Image();
+    // logo.src = "./images/stackoverfl addons.png";
+    logo.src = "https://picsum.photos/200/300";
+    logo.addEventListener("load", logoLoaded);
+    function logoLoaded(e) {
+      console.log(`Really loaded, width: ${logo.width}`);
+      document.body.appendChild(logo);
+    }
+    console.log(`Image loaded, width: ${logo.width}`); //ups
+
+    // za pomocą callbackow odpowiedz: 
+    // czy callback już nastąpił? jaki był wynik? a gdybym chciał poczekać na dwa callbacki?
+
+
+    /* 2. ajax request, JSON.parse, JSON.stringify
+      // https://developer.mozilla.org/pl/docs/XMLHttpRequest
+      // https://xhr.spec.whatwg.org/
+      alenacotokomu?
+       - nie trzeba przeładowywać strony żeby pobrać dane 
+       - można używać zewnętrznych api
+       - szybsza komunikacja (brak początkowego ładowania całości aplikacji)
+       - komunikacja jest asynchroniczna (nie blokuje użytkownika)
+       - aplikacja nie traci stanu
+       */
+    let pliki = ["https://picsum.photos/100/100", "https://picsum.photos/200/200", "https://picsum.photos/300/300", "https://picsum.photos/400/400", "https://picsum.photos/500/500"]
+
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', pliki.pop())
+    xhr.send()
+    xhr.addEventListener('load', (e)=>{
+        console.log(e)
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', pliki.pop())
+        xhr.send()
+        xhr.addEventListener('load', (e)=>{
+            console.log(e)  
+            const xhr = new XMLHttpRequest()
+            xhr.open('GET', pliki.pop())
+            xhr.send()
+            xhr.addEventListener('load', (e)=>{
+                console.log(e)
+                const xhr = xhr = new XMLHttpRequest()
+                xhr.open('GET', pliki.pop())
+                xhr.send()
+                xhr.addEventListener('load', (e)=>{
+                  console.log(e)
+                    // const xhr =
+                })
+            })
+    })
+    })
+
+    // let a = JSON.parse(localStorage.getItem('tablicaPlikow'))
+    // let tablicaObietnic = []
+    
+    
+    // // e.g. - bieżąca pogoda w Krakowie - korzystamy z API openweathermap
+    // // manual: https://openweathermap.org/current
+    // let opwApiKey = "50d53005c0fd5f556bb4ef15224c4209";
+    // // używamy window.XMLHttpRequest - stare IE mają swój inny obiekt
+    // let http = new XMLHttpRequest();
+
+    // // obiekt działajacy asynchronicznie - czekamy na zdarzenie 'readystatechange'
+    // http.addEventListener("readystatechange", httpStateChange);
+    // http.addEventListener("progress", httpProgressChange);
+    // http.addEventListener("error", httpError);
+
+    // // z czym się komunikujemy
+    // let url = `http://api.openweathermap.org/data/2.5/weather?q=Cracow&APPID=${opwApiKey}`;
+    // // let url = `https://meteo.imgw.pl/?model=alaro&loc=krak%C3%B3w_krak%C3%B3w&mode=details`;
+    // console.log(url);
+    
+    // http.open("GET", url, true);
+    // // wysłanie zapytania
+    // http.send();
+    // console.log("Poszłoooo...");
+    // // funkcja obsługująca zapytania ajaxowe
+    // function httpStateChange(e) {
+    //   try {
+    //     // status naszego zapytania
+    //     console.log(`http state change: ${e.target.readyState}`);
+    //     console.log(`http HTTP Status code: ${e.target.status}`);
+    //     if (e.target.readyState == "4") {
+    //       //ended)
+    //       // czysty JSON
+    //       console.log(e.target.responseText);
+    //       document.body.querySelector("#container").innerHTML =
+    //         e.target.responseText;
+    //       // parsujemy txt zawierający obiebt json do OBIEKTU JSON
+    //       pogoda = JSON.parse(e.target.responseText);
+    //       console.log(pogoda);
+    //       document.body.querySelector("#container").innerHTML =
+    //         "Wilgotność: " + pogoda.main.humidity;
+    //     }
+    //   } catch (e) {
+    //     console.log("Wyjątkowo się coś nie udało...", e);
+    //   }
+    // }
+    // // obsługa postępu ładowania
+    // function httpProgressChange(e) {
+    //   console.log(
+    //     `http progress change: ${e.target.position}/${e.target.totalSize}`
+    //   );
+    // }
+    // // obsługa błędu (druga powinna być zawarta w readystatechange - zaimplementowane łapanie wyjatków gdy np. serwer padł)
+    // function httpError(e) {
+    //   console.log(`http error! ${e}`);
+    // }
+
+    // // 3. Debugowanie - Developer Tools->Network->XHR
+    </script>
+  </body>
+</html>
