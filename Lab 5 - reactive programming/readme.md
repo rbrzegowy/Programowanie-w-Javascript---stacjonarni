@@ -11,12 +11,15 @@ function A() {
 Nie lubimy couplingu jeśli nie jest konieczny - utrudnia utrzymanie i reużywanie kodu, łamie podstawowe zasady programowania i robi inne straszne rzeczy. Unikaj couplingu.
 
 ### Todo 1
-Usuń coupling z przykładu (index.js). 
+Usuń coupling pomiędzy funkcjami interval() a saveX() z przykładu w index.js zachowując działanie kodu (timer co 2s jest dalej przekazywany do funkcji saveX)
 
 ### Todo 2
-Zaprojektuj third-party bibliotekę która będzie pośredniczyć w komunikacji i wymianie danych między A, B i C. A także D, E itd.
+Usuń Logger z funkcji saveX() (ale oczywiście dalej chcemy zachować logowanie działania)
 
 ### Todo 3
+Jeśli jeszcze tego nie zrobiłaś/zrobiłeś - zaprojektuj third-party bibliotekę która będzie pośredniczyć w komunikacji i wymianie danych między A, B i C. A także D, E itd.
+
+### Todo 4
 Spytaj prowadzącego, niespodzianka;)
 
 ### Przydatne
