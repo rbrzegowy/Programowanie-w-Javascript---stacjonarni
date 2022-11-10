@@ -26,8 +26,7 @@ function saveCToSessionStorage(data) {
   Logger.log(data)
 }
 
-function saveDToSessionStorage(data) {
-  console.log('[reader D]', data)
-  const storageData = { data }
-  sessionStorage.setItem('D', JSON.stringify(storageData))
+function discoverPowerBallNumber(data) {
+  const number = Math.floor(Math.random() * data * 100)
+  console.log('[powerball number]', data)
 }
