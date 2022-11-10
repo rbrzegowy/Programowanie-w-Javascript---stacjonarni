@@ -23,4 +23,4 @@ Jeśli jeszcze tego nie zrobiłaś/zrobiłeś - zaprojektuj third-party bibliote
 Spytaj prowadzącego, niespodzianka;)
 
 ### Przydatne
-> Wzorzec Observer - Observable
+> Wzorzec Observer
