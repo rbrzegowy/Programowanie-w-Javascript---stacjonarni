@@ -28,5 +28,5 @@ function saveCToSessionStorage(data) {
 
 function discoverPowerBallNumber(data) {
   const number = Math.floor(Math.random() * data * 100)
-  console.log('[powerball number]', data)
+  console.log('[powerball number]', number)
 }
