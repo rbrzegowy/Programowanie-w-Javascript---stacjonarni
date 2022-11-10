@@ -5,8 +5,8 @@ function interval() {
   setInterval(
     () => {
       // mamy coupling - interval ma na sztywno zaszyte w sobie C i D (..i logger)
-      C(timer)
-      D(timer)
+      saveCToSessionStorage(timer)
+      saveDToSessionStorage(timer)
       timer++
     }
     , 2000)
@@ -18,7 +18,7 @@ class Logger {
   }
 }
 
-function C(data) {
+function saveCToSessionStorage(data) {
   console.log('[reader C]', data)
   const storageData = { data }
   sessionStorage.setItem('C', JSON.stringify(storageData))
@@ -26,7 +26,7 @@ function C(data) {
   Logger.log(data)
 }
 
-function D(data) {
+function saveDToSessionStorage(data) {
   console.log('[reader D]', data)
   const storageData = { data }
   sessionStorage.setItem('D', JSON.stringify(storageData))
