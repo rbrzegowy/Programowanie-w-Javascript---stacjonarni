@@ -14,4 +14,4 @@ Niektóre dziury wciągają kulkę i wypluwają ją w innym miejscu. Inne dziury
 > Obserwowanie pochylenia telefonu: window.addEventListener('deviceorientation', cb)  
 > W evencie mamy właściwości alpha, beta, gamma - określają pochylenie w każdej z osi. Uwaga na zakresy wartości (są różne dla różnych osi).  
 > Testowanie aplikacji: przeglądarka, sekcja Sensors w narzędziach dla developerów  
-> Animację oprzyj o requestAnimationFrame  
+> Animację oprzyj o requestAnimationFrame
