@@ -14,6 +14,7 @@ const asyncAdd = async (a,b) => {
       resolve(a+b)
     }, 100)
   })
+}
 ```
 
 ### Zadanie
