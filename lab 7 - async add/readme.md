@@ -24,4 +24,4 @@ async asyncAdd(a,b) => {
 1. Zoptymalizuj działanie swojej funkcji pod kątem czasu wykonania 
 
 ### Przydamisię
-Mierzenie czasu wykonywania skryptu: Performance.now() lub Performance.mark(name) + Performance.measure(name, startMark, endMark)
+Mierzenie czasu wykonywania skryptu: performance.now() lub performance.mark(name) + performance.measure(name, startMark, endMark)
