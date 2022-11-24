@@ -5,8 +5,8 @@ Funkcja wykonująca zadaną operację zwraca Promise.
 
 Asynchroniczna funkcja dodająca:  
 ```Javascript
-async asyncAdd(a,b) => {
-  if (typeof a !== number || typeof b !== number) {
+const asyncAdd = async (a,b) => {
+  if (typeof a !== 'number' || typeof b !== 'number') {
     return Promise.reject('Argumenty muszą mieć typ number!')
   }
   return new Promise((resolve, reject) => {
@@ -14,7 +14,6 @@ async asyncAdd(a,b) => {
       resolve(a+b)
     }, 100)
   })
-}
 ```
 
 ### Zadanie
