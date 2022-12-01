@@ -15,7 +15,7 @@ X, Y jest definiowane przez użytkownika (pola tekstowe lub np. suwaki - wstępn
 
 ### Wersja Męczy nas piłka:
 1. Każda kulka ma początkowo losowy rozmiar. Rozmiar kulki określa jej energię. Agarrr:)
-2. Gdy kulka łączy się z drugą (linia) energia płynie od kulki słabszej do silniejszej (kulki zmieniają rozmiar).
+2. Gdy kulka łączy się z drugą (linia) energia płynie od kulki słabszej do silniejszej (kulki zmieniają rozmiar).   
 Siła kulki to X \* Prędkość + Y \* Masa.  
 X, Y konfigurowalne przez użytkownika.
 3. Kulki o rozmiarze mniejszym niż 1 umierają
