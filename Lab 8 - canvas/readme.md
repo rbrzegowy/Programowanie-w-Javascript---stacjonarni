@@ -6,7 +6,7 @@ Coś takiego: [Canvas - w kulki a nie w piłkę...](https://wseii-my.sharepoint.
 1. Jeśli odległość pomiędzy kulkami jest mniejsza niż Y rysuj pomiędzy nimi linię
 1. Kulki odbijają się od krawędzi strony
 1. Dodaj przyciski Start i Reset
-1. Zbadaj ile jesteś w stanie wyświetlić kulek (stabilne 60fps) przy założeniu Y = 20% szerokości ekranu
+1. Zbadaj ile jesteś w stanie wyświetlić kulek (stabilne 60fps) przy założeniu Y = 20% szerokości ekranu  
 X, Y jest definiowane przez użytkownika (pola tekstowe lub np. suwaki - wstępnie uzupełnione)
 
 ### Wersja Task Failed Successfully: 
@@ -14,9 +14,10 @@ X, Y jest definiowane przez użytkownika (pola tekstowe lub np. suwaki - wstępn
 2. Kliknięcie w kulkę powoduje jej usunięcie i utworzenie dwóch nowych w losowych miejscach.
 
 ### Wersja Męczy nas piłka:
-1. Każda kulka ma początkowo losowy rozmiar. Rozmiar kulki określa jej energię. Agarr:)
+1. Każda kulka ma początkowo losowy rozmiar. Rozmiar kulki określa jej energię. Agarrr:)
 2. Gdy kulka łączy się z drugą (linia) energia płynie od kulki słabszej do silniejszej (kulki zmieniają rozmiar).
-Siła kulki to X*Prędkość + Y*Masa. X, Y konfigurowalne przez użytkownika.
+Siła kulki to X \* Prędkość + Y \* Masa.  
+X, Y konfigurowalne przez użytkownika.
 3. Kulki o rozmiarze mniejszym niż 1 umierają
 4. W miarę jak kulka rośnie jej prędkość zwalnia (gdy maleje - przyspiesza)
 
