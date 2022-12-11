@@ -8,28 +8,30 @@ const svgMargin = 50
 const svgWidth = screenWidth - svgMargin * 2
 const svgHeight = screenHeight - svgMargin * 2
 
-app()
-document.addEventListener('DOMContentLoaded', topLightInSVG)
+// app1_circle()
+app2_lights()
+// topLightInInlineSVG()
 
-function app() {
+function app1_circle() {
   const svgContainer = createSvg()
   document.body.appendChild(svgContainer)
 
   const xCenter = svgWidth / 2
   const yCenter = svgHeight / 2
-  const circle = createCircle(svgContainer, xCenter, yCenter, 50, '#000')
+  createCircle(svgContainer, xCenter, yCenter, 50, '#000')
+}
+function app2_lights() {
+  const svgContainer = createSvg()
+  document.body.appendChild(svgContainer)
 
-
-  // const path = createPath(svgContainer, 0, 0, svgWidth, svgHeight, '#000')
-  // animateColor(path, 'stroke')
-  // for (let offset = 0; offset < 10; offset++) {
-  //   const xOffset = offset * 100
-  //   const yOffset = 0
-  //   const path = createPath(svgContainer, xOffset, yOffset, svgWidth - xOffset, svgHeight, '#000')
-  //   const path2 = createPath(svgContainer, xOffset, svgHeight, svgWidth - xOffset, yOffset, '#000')
-  //   animateColor(path, 'stroke')
-  //   animateColor(path2, 'stroke')
-  // }
+  for (let offset = 0; offset < 10; offset++) {
+    const xOffset = offset * 500
+    const yOffset = 0
+    const path = createPath(svgContainer, xOffset, yOffset, svgWidth - xOffset, svgHeight, '#000')
+    const path2 = createPath(svgContainer, xOffset, svgHeight, svgWidth - xOffset, yOffset, '#000')
+    animateColor(path, 'stroke')
+    animateColor(path2, 'stroke')
+  }
 }
 
 function createSvg() {
@@ -67,13 +69,14 @@ function createPath(container, startX, startY, endX, endY, color) {
 
   container.appendChild(path)
 
-  let step = 2
+  let step = 2 + Math.random() * 5
+  const direction = Math.random() > 0.5 ? 1 : -1
   setInterval(() => step = -step, 3000)
   const animate = function animationLoopCb() {
-    x1 += step
-    y1 -= step
-    x2 -= step
-    y2 += step
+    x1 += step * direction
+    y1 -= step * direction
+    x2 -= step * direction
+    y2 += step * direction
     let bezierCmd = `C${x1}, ${y1}, ${x2}, ${y2}, ${endX}, ${endY}`
     path.setAttribute('d', `${startCmd} ${bezierCmd}`);
     requestAnimationFrame(animationLoopCb)
@@ -108,13 +111,15 @@ function normalizeRGBValue(val) {
   return Math.max(0, Math.min(255, val))
 }
 
-function topLightInSVG() {
-  document.querySelector('#any-svg').style.display = 'block'
-  const lightPath = document.querySelector('#top-light')
-  let lights = ['white', 'red']
-  let currLight = 0
-  setInterval(() => {
-    lightPath.style.fill = lights[currLight]
-    currLight = currLight === 0 ? 1 : 0
-  }, 1000)
+function topLightInInlineSVG() {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#any-svg').style.display = 'block'
+    const lightPath = document.querySelector('#top-light')
+    let lights = ['white', 'red']
+    let currLight = 0
+    setInterval(() => {
+      lightPath.style.fill = lights[currLight]
+      currLight = currLight === 0 ? 1 : 0
+    }, 1000)
+  })
 }
