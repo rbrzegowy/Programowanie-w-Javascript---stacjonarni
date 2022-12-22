@@ -1,0 +1,9 @@
+body {
+    margin: 0;
+    background: #444;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    margin: 100px auto;
+}
