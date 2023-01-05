@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM, zdarzenia w JS</title>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script type="text/javascript">
+
+        // docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators
+
+        // -------------------------
+        // Iterables/Iterators
+        // -------------------------
+        // Przykłady Iterables: Array, Map, String, Set, TypedArray
+        // Obiekt Iterable rozpoznasz po tym że możesz na nim zrobić for...of. Po prostu.
+        //
+        // Jak to działa: Iterable to funkcja która zwraca iterator lub obiekt który posiada metodę '[Symbol.iterator]' (lub [Symbol.asyncIterator]). 
+        // Metoda ma zwrócić iterator
+
+        // Iterator to obiekt który posiada metodę .next() (oraz nieobowiązkowo return(), throw())
+        // zwracającą IteratorResult
+
+        // interface IteratorResult {
+        //      done: boolean,
+        //      value: any
+        // }
+
+        // czyli mamy łańcuszek: 
+        // Element Iterable (który zwraca) 
+        // -> Iterator (ma .next() który zwraca) 
+        // -> IteratorResult
+
+        // iterator z funkcji będący odpowiednikem iife - używane gdy inny kod wymaga podania iteratora
+        // iterator nie musi się kończyć:)
+        const createInvoiceNumberIterator = () => {
+            let counter = 1
+            return {
+                next: () => {
+                    const date = new Date().toLocaleDateString().replaceAll('.', '/')
+                    const invoiceNumber = `${counter}/${date}`
+                    counter++
+                    return {
+                        done: false,
+                        value: invoiceNumber
+                    }
+                }
+            }
+        }
+        const getInvoiceNumber = createInvoiceNumberIterator()
+        const n1 = getInvoiceNumber.next().value
+        const n2 = getInvoiceNumber.next().value
+        console.log('[Nr-y faktur]', n1, n2)
+
+        // obiekt iterable
+        const cities = {
+            list: ['Kraków', 'Wrocław', 'Warszawa', 'Gdańsk', 'Katowice'],
+            [Symbol.iterator]: function () {
+                let licznik = 0
+                let done = false
+                // iterator (.next)
+                return {
+                    next: () => {
+                        licznik++
+                        if (licznik === this.list.length) {
+                            done = true
+                        }
+                        // IteratorResult
+                        return {
+                            done,
+                            value: this.list[licznik],
+                        }
+                    },
+                    // jeśli wywołane to znaczy że skończyliśmy z iterowaniem, wyczyść środowisko
+                    // np. koniec iterable, break lub return wewnątrz for..of
+                    return() {
+                        console.log('eo iterator, licznik:', licznik)
+                        return { done: true }
+                    },
+                    throw() { }
+                }
+            }
+            // z użyciem generatora
+            // [Symbol.iterator]: function* () {
+            // skrótowo:
+            // *[Symbol.iterator]() {
+            //     for (const el of this.list) {
+            //         yield el
+            //     }
+            // }
+            // lub jeszcze krócej z delegację generatora do kolejengo iteratora (yield*):
+            // [Symbol.iterator]: function* () {
+            //     yield* this.list
+            // }
+        }
+        // i mamy obiekt którego używamy jak tablicę... i dodatkowo tym sterujemy:)
+        for (const city of cities) {
+            console.log(city)
+        }
+        // tu będzie wywołane return() - bierzemy 3, iterator może dostarczyć więcej
+        const [city1, city2, city3] = cities
+        console.log('[DESTR]', city1, city2, city3)
+
+
+
+        // -----------------
+        // Generatory
+        // ----------------
+        // Generator to funkcja którą można w dowolnym momencie zatrzymać (yield) i później wznowić (ponowne wywołanie .next())
+        // w środku generatora używamy yield value (zapauzuj) i return val (zakończ)
+        // każdy generator może zostać iterowany tylko jednokrotnie (dlatego często używamy fabryk generatorów)
+
+        function* getMan() {
+            // generator zachowuje kontekst podczas .next() Jupiajej!
+            let i = 1
+            yield `Adam ${i}`
+            i++
+            yield `John ${i}`
+            i++
+            yield `Susie ${i}`
+
+            // wooosh
+            // while (true) {
+            //     yield Math.random()
+            // }
+        }
+        const man = getMan()
+
+        console.log('[GENERATOR] getMan')
+        console.log(man.next()) // return {done: false, value: Adam 1}
+        console.log(man.next()) // return {done: false, value: John 2}
+        console.log(man.next()) // return {done: false, value: Susie 3}
+        console.log(man.next()) // return {done: true, value: undefined}
+        // użycie w dowolnym momencie man.return(val) kończy generator (przesuwa go na koniec)
+
+        // inny przykład
+        const people = [
+            { name: 'Adam', age: 20, eyes: 'blue' },
+            { name: 'Susie', age: 25, eyes: 'green' },
+            { name: 'Kate', age: 18, eyes: 'brown' }
+        ]
+
+        function* getPerson(arr) {
+            for (let person of arr) {
+                yield person
+            }
+            // lub
+            // yield* person
+        }
+        console.log('[Persons - first iteration]')
+        const persons = getPerson(people)
+        for (const person of persons) {
+            console.log(person)
+        }
+        console.log('[Persons - second iteration]')
+        // nie zadziała - persons już przeiterowaliśmy
+        // for (const person of persons) {
+        // nowe persons
+        for (const person of getPerson(people)) {
+            console.log(person)
+        }
+
+        // async generator
+        async function* promka() {
+            const data = 'promise'
+            for (const letter of data) {
+                yield asyncDelay(letter, 300);
+            }
+        }
+        function asyncDelay(val, time) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve(val)
+                }, time)
+            })
+        }
+        async function iteratePromka() {
+            console.log('[ASYNC]');
+            for await (const val of promka()) {
+                console.log(val)
+            }
+        }
+
+        iteratePromka();
+
+
+        // --------------------------
+        // Generator z parametrami
+        // --------------------------
+        // yield może przyjmować wartości do generatora (przekazane przez .next(val))
+        function* generator() {
+            let prev = 'empty'
+            console.log('[* with params]')
+            while (true) {
+                const val = yield prev;
+
+                prev = val
+                console.log('from gen: ', val)
+            }
+        }
+
+        const g2 = generator();
+
+        console.log(g2.next())
+        console.log(g2.next('shiny'))
+        console.log(g2.next('happy'))
+        console.log(g2.next('people'))
+    </script>
+</body>
+
+</html>
